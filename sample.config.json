@@ -1,0 +1,33 @@
+{
+  "development": {
+    "db": {
+      "host": "127.0.0.1",
+      "port": "5432",
+      "dbname": "geocodr",
+      "user": "user",
+      "pwd": "password"
+    },
+    "server": {
+      "host": "127.0.0.1",
+      "port": "3000",
+      "path": "search"
+    },
+    "messages": {
+      "shortquery": "Request too short, it must exceed three characters."
+    },
+    "keys": [],
+    "lang": "en",
+    "limit": 5,
+    "radius": 15,
+    "format": "list",
+    "abbreviations": [
+        ["dr.", "doctor"],
+        ["gral.", "general"],
+        ["pres.", "president"],
+        ["ave.", "avenue"],
+        ["st.", "saint"]
+      ]
+    },
+    "production": {}
+  }
+  
