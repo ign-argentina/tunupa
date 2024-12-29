@@ -79,12 +79,17 @@ const query = async (req, res) => {
       );
     } catch (error) {
       p.format === "list"
-        ? (model = models.geocode)
-        : (model = models.geojsonGeocode);
-
+      ? (model = models.geocode)
+      : (model = models.geojsonGeocode);
+      
       db.pool.query(model, [p.q, p.limit], (error, results) => {
         if (error) {
-          throw error;
+          if(error.message.includes("authentication failed")) {
+            res.status(500).json("Database authentication error, check credentials or connections available.");
+          } else {
+            res.status(500).json(error.message);
+          }
+          //console.log(error.message);
         }
         if (p.format === "geojson") {
           featureCollection.features = results.rows;
