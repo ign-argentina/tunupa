@@ -10,6 +10,16 @@ _**Tunupa**_ es una de las divinidades andinas más antiguas, en su máximo apog
 
 La función de _Tunupa_ era el **ordenamiento del mundo**, personifica varios agentes de la naturaleza como el sol, el viento y las tormentas que pueden influir, para bien o para mal, en la producción agrícola. [Fuente: Pueblos Originarios](https://pueblosoriginarios.com/sur/andina/aymara/tunupa.html)
 
+# Ejecución
+
+1. Descargar o clonar este repositorio
+2. Contar con una base de datos que tenga:
+   1. una tabla de puntos llamada **places** que incluya atributos como nobmre y un vector de búsqueda de texto (ts_vector) donde la aplicación realizará las búsquedas por nombre llamado _"vector"_
+   2. una tabla de polígonos llamada **admin_areas** que incluya las áreas que se devuelven como _"envolventes"_ de un punto o coordenadas buscadas, son las áreas intersectadas por ese punto
+3. Copiar el archivo `sample.config.json` con el nombre `config.json` y modificar los valores de IP, puertos, usuario y contraseña para poder conectar con la base de datos
+4. Instalar Node
+5. Ejecutar la aplicación con el comando `npm run start` que usa _Nodemon_ o mediante otro script, por ejemplo _Forever_
+
 # Uso
 
 La API expone dos rutas:
