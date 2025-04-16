@@ -1,6 +1,6 @@
 # Tunupa
 
-_**Tunupa**_ es un geocodificador directo y reverso o inverso, es decir que busca una ubicación por el nombre de un lugar o bien busca el nombre si recibe las coordenadas del lugar.
+_**Tunupa**_ es un geocodificador directo y reverso o inverso, es decir que busca una ubicación por nombre de un lugar o busca un nombre si recibe las coordenadas del lugar.
 
 Expone sus funcionalidades a través de una API simple que acepta varios parámetros. Se conecta a una base de datos PostgreSQL donde debe existir una tabla con los nombres y sus coordenadas.
 
@@ -59,7 +59,7 @@ Devuelve como resultado
 ]
 ```
 
-Si el texto buscado es menos específico pueden ser devueltos varios resultados por la API.
+Si el texto buscado es menos específico pueden ser devueltos varios resultados.
 
 Por ejemplo al buscar "Rio" se obtiene más de un resultado (acortado en este caso a 5).
 
@@ -124,7 +124,7 @@ Cada resultado incluye su identificador o _id_ que puede ser usado luego en la r
 
 **Solicitud**
 
-De atributos del resultado "Río Grande" con salida en formato GeoJSON:
+Devuelve los atributos del resultado "Río Grande" con salida en formato GeoJSON.
 
 > GET /places?id=627&format=geojson
 
@@ -164,7 +164,7 @@ Se usa el mismo parámetro **"q"** para enviar un par de coordenadas geográfica
 
 **Ejemplos válidos:** formato _latitud, longitud_
 
-> -34.607356,-58.371786 // revuelve Ciudad Buenos Aires
+> -34.607356,-58.371786 // devuelve Ciudad Buenos Aires
 >
 > -32,-65
 >
@@ -207,7 +207,7 @@ Si las coordenadas son próximas a un lugar o elemento en la taba de búsqueda s
 
 Si las coordenadas no coinciden con ningún punto de un lugar conocido la API responde con las áreas que son intersectadas o que contienen a ese punto.
 
-Por ejemplo al buscar "-50.489952, -73.114255" (Glaciar Perito Moreno) se obtiene como resultado el listado de áreas que contienen a esas coordenadas, de esa forma se puede al menos entender la ubicación conociendo la región o área administrativa en la que se encuentra.
+Por ejemplo al buscar "-50.489952, -73.114255" (Glaciar Perito Moreno) se obtiene como resultado el listado de áreas que contienen a esas coordenadas, de esa forma se puede al menos obtener la ubicación conociendo la región o área administrativa en la que se encuentra.
 
 Siendo el resultado: _"Departamento Lago Argentino, Parque y Reserva Nacional Los Glaciares, Provincia de Santa Cruz"_
 
