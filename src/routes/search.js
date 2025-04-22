@@ -155,7 +155,6 @@ const directGecoding = async (res, p) => {
   //console.log(sql)
   try {
     
-    console.log(p.q)
     const rows = await runQuery(sql, [p.q, p.limit]);
     const response = getResponse(formatResults(rows, p.format))
     return res.status(response.code).json(response.body);
