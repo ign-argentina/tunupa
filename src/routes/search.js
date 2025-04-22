@@ -6,6 +6,7 @@ const models = require("../models/queries");
 const Coordinates = require("coordinate-parser");
 
 const MIN_QUERY_LENGTH = 2;
+const NOT_FOUND = "No se encontraron resultados.";
 
 /**
  * Normaliza una cadena de texto aplicando reemplazos definidos en las abreviaciones de configuración.
@@ -79,6 +80,9 @@ const runQuery = (query, params) =>
  */
 
 const query = async (req, res) => {
+  let codigo = 200
+  let response = null
+
   const p = {
     q: data.normalize(req.query.q || ""),
     key: req.query.key || "",
@@ -108,7 +112,11 @@ const query = async (req, res) => {
       rows = await runQuery(query, [p.lon, p.lat, p.limit]);
     }
 
-    return res.status(200).json(formatResults(rows, p.format));
+
+    response = formatResults(rows, p.format)
+    codigo = response.length > 0 ? 200 : 404
+    response = response.length > 0 ? response : NOT_FOUND
+    return res.status(codigo).json(response);
 
   } catch (error) {
     return directGecoding(res, p);
@@ -128,11 +136,20 @@ const query = async (req, res) => {
  */
 
 const directGecoding = async (res, p) => {
+
+  let codigo = 200;
+  let response = null;
+
   const sql = p.format === "list" ? models.geocode : models.geojsonGeocode;
   //console.log(sql)
   try {
     const rows = await runQuery(sql, [p.q, p.limit]);
-    return res.status(200).json(formatResults(rows, p.format));
+
+    response = formatResults(rows, p.format)
+    codigo = response.length > 0 ? 200 : 404
+    response = response.length > 0 ? response : NOT_FOUND    
+
+    return res.status(codigo).json(response);
   } catch (error) {
     const isAuthError = error.message.includes("authentication failed");
     return res.status(500).json(isAuthError ? "Database authentication error, check credentials or connections available." : error.message);
