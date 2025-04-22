@@ -12,6 +12,21 @@
 			"item": [
 				{
 					"name": "Inverso - Coordenadas válidas (Buenos Aires)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -39,6 +54,21 @@
 				},
 				{
 					"name": "Inverso - Coordenadas válidas (Buenos Aires), distinto formato",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -66,6 +96,21 @@
 				},
 				{
 					"name": "Inverso - Coordenadas válidas Jujuy, Ruta 52, Purmamarca",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -93,6 +138,21 @@
 				},
 				{
 					"name": "Inverso - Coordenadas válidas cerca de Córdoba",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -120,6 +180,21 @@
 				},
 				{
 					"name": "Inverso - Coordenadas válidas cerca de Córdoba, distinto formato",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -147,6 +222,21 @@
 				},
 				{
 					"name": "X - Inverso - Coordenadas fuera de rango (latitud > 90)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code != 200\", function () {\r",
+									"    pm.response != 200;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -174,6 +264,21 @@
 				},
 				{
 					"name": "X - Inverso - Coordenadas fuera de rango (longitud > 180)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code != 200\", function () {\r",
+									"    pm.response != 200;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -201,6 +306,21 @@
 				},
 				{
 					"name": "X - Inverso - Coordenadas erróneas",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code != 200\", function () {\r",
+									"    pm.response != 200;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -227,6 +347,21 @@
 				},
 				{
 					"name": "Inverso - Cascada de los Cántaros",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code == 200\", function () {\r",
+									"    pm.response == 200;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -254,6 +389,21 @@
 				},
 				{
 					"name": "Inverso - Cercanías Huacalera",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code == 200\", function () {\r",
+									"    pm.response == 200;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -285,6 +435,21 @@
 			"item": [
 				{
 					"name": "Directo - Búsqueda de texto que incluya 'argentina'",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code == 200\", function () {\r",
+									"    pm.response == 200;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -311,6 +476,62 @@
 				},
 				{
 					"name": "Directo - Ubicacion especifica, Chacarita",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code == 200\", function () {\r",
+									"    pm.response == 200;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/buscador/search?q=Chacarita, CABA, Buenos Aires",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"buscador",
+								"search"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "Chacarita, CABA, Buenos Aires"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Directo - Ubicacion amplia, Chacarita",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code == 200\", function () {\r",
+									"    pm.response == 200;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -337,6 +558,21 @@
 				},
 				{
 					"name": "Directo - Joaquín V gonzález",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code == 200\", function () {\r",
+									"    pm.response == 200;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -363,6 +599,21 @@
 				},
 				{
 					"name": "Directo - Joaquín V gonzález, Salta",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code == 200\", function () {\r",
+									"    pm.response == 200;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -389,6 +640,21 @@
 				},
 				{
 					"name": "Directo - Joaquín V gonzález, Salta Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code == 200\", function () {\r",
+									"    pm.response == 200;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -415,6 +681,21 @@
 				},
 				{
 					"name": "Directo - Huacalera",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code == 200\", function () {\r",
+									"    pm.response == 200;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -441,6 +722,21 @@
 				},
 				{
 					"name": "X - Directo - Cascada de los Cántaros",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code != 200\", function () {\r",
+									"    pm.response != 200;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -470,6 +766,21 @@
 		},
 		{
 			"name": "Query vacía",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response code != 200\", function () {\r",
+							"    pm.response != 200;\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -496,6 +807,21 @@
 		},
 		{
 			"name": "Query con 1 letra",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response code != 200\", function () {\r",
+							"    pm.response != 200;\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -522,6 +848,21 @@
 		},
 		{
 			"name": "Coordenadas mal formateadas",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response code != 200\", function () {\r",
+							"    pm.response != 200;\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -548,6 +889,21 @@
 		},
 		{
 			"name": "Coordenadas con valores invertidos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response code != 200\", function () {\r",
+							"    pm.response != 200;\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
