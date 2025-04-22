@@ -1,0 +1,932 @@
+{
+	"info": {
+		"_postman_id": "68ab6d4a-28ec-4a0a-a801-ed7a71bcba70",
+		"name": "Geocoding API Tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "44289352",
+		"_collection_link": "https://franco-6986151.postman.co/workspace/Franco's-Workspace~8cbe7814-91d8-4e52-8882-ba53d116a300/collection/44289352-68ab6d4a-28ec-4a0a-a801-ed7a71bcba70?action=share&source=collection_link&creator=44289352"
+	},
+	"item": [
+		{
+			"name": "Geocoding Inverso",
+			"item": [
+				{
+					"name": "Inverso - Coordenadas válidas (Buenos Aires)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/buscador/search?q=-34.603722,-58.381592",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"buscador",
+								"search"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "-34.603722,-58.381592",
+									"description": "Obelisco, Corrientes y 9 de Julio"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Inverso - Coordenadas válidas (Buenos Aires), distinto formato",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/buscador/search?q=34°36'13.4\"S 58°22'53.7\"W",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"buscador",
+								"search"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "34°36'13.4\"S 58°22'53.7\"W",
+									"description": "Obelisco, Corrientes y 9 de Julio"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Inverso - Coordenadas válidas Jujuy, Ruta 52, Purmamarca",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/buscador/search?q=-23.744511144877475, -65.49919341398177",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"buscador",
+								"search"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "-23.744511144877475, -65.49919341398177",
+									"description": "Ruta 52, purmamarca"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Inverso - Coordenadas válidas cerca de Córdoba",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/buscador/search?q=-31.4201,-64.1888",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"buscador",
+								"search"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "-31.4201,-64.1888",
+									"description": "Blvd. San Juan y Av. velez Sarsfield, Córdoba."
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Inverso - Coordenadas válidas cerca de Córdoba, distinto formato",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/buscador/search?q=31°25'12.4\"S 64°11'19.7\"W",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"buscador",
+								"search"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "31°25'12.4\"S 64°11'19.7\"W",
+									"description": "Blvd. San Juan y Av. velez Sarsfield, Córdoba."
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "X - Inverso - Coordenadas fuera de rango (latitud > 90)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code != 200\", function () {\r",
+									"    pm.response != 200;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/buscador/search?q=95,-58.381592",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"buscador",
+								"search"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "95,-58.381592",
+									"description": "Out of Range"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "X - Inverso - Coordenadas fuera de rango (longitud > 180)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code != 200\", function () {\r",
+									"    pm.response != 200;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/buscador/search?q=-34.603722,190",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"buscador",
+								"search"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "-34.603722,190",
+									"description": "Out of range"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "X - Inverso - Coordenadas erróneas",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code != 200\", function () {\r",
+									"    pm.response != 200;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/buscador/search?q=189-55-",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"buscador",
+								"search"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "189-55-"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Inverso - Cascada de los Cántaros",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code == 200\", function () {\r",
+									"    pm.response == 200;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/buscador/search?q=-41.012844982363895, -71.82222877080805",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"buscador",
+								"search"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "-41.012844982363895, -71.82222877080805",
+									"description": "Cascada de los Cántaros"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Inverso - Cercanías Huacalera",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code == 200\", function () {\r",
+									"    pm.response == 200;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/buscador/search?q=-23.429679673121264, -65.37220428529342",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"buscador",
+								"search"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "-23.429679673121264, -65.37220428529342"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Geocoding Directo",
+			"item": [
+				{
+					"name": "Directo - Búsqueda de texto que incluya 'argentina'",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code == 200\", function () {\r",
+									"    pm.response == 200;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/buscador/search?q=argentina",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"buscador",
+								"search"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "argentina"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Directo - Ubicacion especifica, Chacarita",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code == 200\", function () {\r",
+									"    pm.response == 200;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/buscador/search?q=Chacarita, CABA, Buenos Aires",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"buscador",
+								"search"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "Chacarita, CABA, Buenos Aires"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Directo - Ubicacion amplia, Chacarita",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code == 200\", function () {\r",
+									"    pm.response == 200;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/buscador/search?q=Chacarita, CABA, Buenos Aires",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"buscador",
+								"search"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "Chacarita, CABA, Buenos Aires"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Directo - Joaquín V gonzález",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code == 200\", function () {\r",
+									"    pm.response == 200;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/buscador/search?q=Joaquin v gonzalez",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"buscador",
+								"search"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "Joaquin v gonzalez"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Directo - Joaquín V gonzález, Salta",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code == 200\", function () {\r",
+									"    pm.response == 200;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/buscador/search?q=joaquin v gonzalez, salta",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"buscador",
+								"search"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "joaquin v gonzalez, salta"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Directo - Joaquín V gonzález, Salta Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code == 200\", function () {\r",
+									"    pm.response == 200;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/buscador/search?q=los tres pozos, joaquin v gonzalez, salta",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"buscador",
+								"search"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "los tres pozos, joaquin v gonzalez, salta"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Directo - Huacalera",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code == 200\", function () {\r",
+									"    pm.response == 200;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/buscador/search?q=Huacalera",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"buscador",
+								"search"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "Huacalera"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "X - Directo - Cascada de los Cántaros",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code != 200\", function () {\r",
+									"    pm.response != 200;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/buscador/search?q=Cascada de los Cántaros",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"buscador",
+								"search"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "Cascada de los Cántaros",
+									"description": "Neuquen"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Query vacía",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response code != 200\", function () {\r",
+							"    pm.response != 200;\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/buscador/search?q=",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"buscador",
+						"search"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Query con 1 letra",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response code != 200\", function () {\r",
+							"    pm.response != 200;\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/buscador/search?q=a",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"buscador",
+						"search"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "a"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Coordenadas mal formateadas",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response code != 200\", function () {\r",
+							"    pm.response != 200;\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/buscador/search?q=notacoordinate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"buscador",
+						"search"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "notacoordinate"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Coordenadas con valores invertidos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response code != 200\", function () {\r",
+							"    pm.response != 200;\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/buscador/search?q=-180,-90",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"buscador",
+						"search"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "-180,-90"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
