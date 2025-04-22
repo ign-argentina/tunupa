@@ -6,7 +6,6 @@ const models = require("../models/queries");
 const Coordinates = require("coordinate-parser");
 
 const MIN_QUERY_LENGTH = 2;
-const NOT_FOUND = "No se encontraron resultados.";
 
 /**
  * Normaliza una cadena de texto aplicando reemplazos definidos en las abreviaciones de configuración.
@@ -59,7 +58,7 @@ const getResponse = (rows) => {
   }
 
   response.code = rows.length > 0 ? 200 : 404
-  response.body = rows.length > 0 ? rows : NOT_FOUND
+  response.body = rows.length > 0 ? rows : config.messages.notFound
   return response;
 };
 

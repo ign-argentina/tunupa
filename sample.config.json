@@ -13,7 +13,8 @@
       "path": "search"
     },
     "messages": {
-      "shortquery": "Request too short, it must exceed three characters."
+      "shortquery": "Solicitud demasiado corta, debe superar los tres caracteres.",
+      "notFound": "No se encontraron resultados."
     },
     "keys": [],
     "lang": "en",
