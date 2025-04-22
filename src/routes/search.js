@@ -46,6 +46,24 @@ const formatResults = (rows, format) => {
 };
 
 /**
+ * Genera objeto respuesta. Compara la longitud de las filas con 0 y asigna el código HTTP correspondiente.
+ *
+ * @param {Array} rows - Array de filas, resultado de la query a la DB.
+ * @returns {Object} - Devuelve un objeto respuesta con su código HTTP y cuerpo.
+ */
+
+const getResponse = (rows) => {
+  let response = {
+    code: 500,
+    body: null,
+  }
+
+  response.code = rows.length > 0 ? 200 : 404
+  response.body = rows.length > 0 ? rows : NOT_FOUND
+  return response;
+};
+
+/**
  * Ejecuta la consulta SQL y devuelve una promesa con los resultados.
  *
  * @param {String} query - Query a ejecutarse
@@ -80,8 +98,6 @@ const runQuery = (query, params) =>
  */
 
 const query = async (req, res) => {
-  let codigo = 200
-  let response = null
 
   const p = {
     q: data.normalize(req.query.q || ""),
@@ -108,15 +124,13 @@ const query = async (req, res) => {
     let rows = await runQuery(sql, [p.lon, p.lat, p.radius, p.limit]);
 
     if (!rows || rows.length < 1) {
-      const query = models.intersects;
-      rows = await runQuery(query, [p.lon, p.lat, p.limit]);
+      const sql = models.intersects;
+      rows = await runQuery(sql, [p.lon, p.lat, p.limit]);
     }
 
+    const response = getResponse(formatResults(rows, p.format))
 
-    response = formatResults(rows, p.format)
-    codigo = response.length > 0 ? 200 : 404
-    response = response.length > 0 ? response : NOT_FOUND
-    return res.status(codigo).json(response);
+    return res.status(response.code).json(response.body);
 
   } catch (error) {
     return directGecoding(res, p);
@@ -137,20 +151,17 @@ const query = async (req, res) => {
 
 const directGecoding = async (res, p) => {
 
-  let codigo = 200;
-  let response = null;
-
   const sql = p.format === "list" ? models.geocode : models.geojsonGeocode;
   //console.log(sql)
   try {
+    
+    console.log(p.q)
     const rows = await runQuery(sql, [p.q, p.limit]);
+    const response = getResponse(formatResults(rows, p.format))
+    return res.status(response.code).json(response.body);
 
-    response = formatResults(rows, p.format)
-    codigo = response.length > 0 ? 200 : 404
-    response = response.length > 0 ? response : NOT_FOUND    
-
-    return res.status(codigo).json(response);
   } catch (error) {
+    console.log("An error has been catched")
     const isAuthError = error.message.includes("authentication failed");
     return res.status(500).json(isAuthError ? "Database authentication error, check credentials or connections available." : error.message);
   }
