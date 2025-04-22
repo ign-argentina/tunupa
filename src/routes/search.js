@@ -31,7 +31,7 @@ const data = {
  *
  * @param {Array} rows - Array de filas, resultado de la query a la DB.
  * @param {string} format - Formato ("geojson" o "list").
- * @returns {Object|Array} - Devuelve un FeatureCollection en GeoJSON si el formato es "geojson", o el array de filas si el formato es "list".
+ * @returns {Object|Array} - Devuelve un objeto "FeatureCollection" en GeoJSON si el formato es "geojson", o el array de filas si el formato es "list".
  */
 
 const formatResults = (rows, format) => {
