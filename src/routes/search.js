@@ -49,6 +49,8 @@ const formatResults = (rows, format) => {
  *
  * @param {Array} rows - Array de filas, resultado de la query a la DB.
  * @returns {Object} - Devuelve un objeto respuesta con su código HTTP y cuerpo.
+ * 
+ * 
  */
 
 const getResponse = (rows) => {

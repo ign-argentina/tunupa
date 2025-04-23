@@ -4,6 +4,8 @@ const config = require("../config");
 const db = require("../database");
 const models = require("../models/places");
 
+
+// TO DO
 const query = async (req, res) => {
   let p = {
     id: req.query.id || "",
