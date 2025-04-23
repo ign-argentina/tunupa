@@ -53,12 +53,10 @@ const formatResults = (rows, format) => {
 
 const getResponse = (rows) => {
   let response = {
-    code: 500,
-    body: null,
+    code: 200,
+    body: rows,
   }
 
-  response.code = rows.length > 0 ? 200 : 404
-  response.body = rows.length > 0 ? rows : config.messages.notFound
   return response;
 };
 
@@ -128,8 +126,10 @@ const query = async (req, res) => {
     }
 
     const response = getResponse(formatResults(rows, p.format))
-
-    return res.status(response.code).json(response.body);
+   
+   
+   // return res.status(200).json(formatResults(rows, p.format));
+      return res.status(response.code).json(response.body);  
 
   } catch (error) {
     return directGecoding(res, p);
@@ -156,6 +156,8 @@ const directGecoding = async (res, p) => {
     
     const rows = await runQuery(sql, [p.q, p.limit]);
     const response = getResponse(formatResults(rows, p.format))
+
+  //  return res.status(200).json(formatResults(rows, p.format));
     return res.status(response.code).json(response.body);
 
   } catch (error) {
