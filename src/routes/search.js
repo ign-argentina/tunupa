@@ -1,9 +1,7 @@
-"use strict";
-
-const config = require("../config");
-const db = require("../database");
-const models = require("../models/queries");
-const Coordinates = require("coordinate-parser");
+import config from "../config.js";
+import db from "../database.js";
+import * as models from "../models/queries.js";
+import Coordinates from "coordinate-parser";
 
 const MIN_QUERY_LENGTH = 2;
 
@@ -71,12 +69,14 @@ const getResponse = (rows) => {
  * 
  */
 
-const runQuery = (query, params) =>
-  new Promise((resolve, reject) => {
-    db.pool.query(query, params, (err, results) =>
+const runQuery = (query, params) => { 
+  return new Promise((resolve, reject) => {
+    db.query(query, params, (err, results) =>
       err ? reject(err) : resolve(results.rows)
     );
   });
+}
+
 
 /**
  * Maneja una búsqueda geográfica por coordenadas o texto.
@@ -97,7 +97,6 @@ const runQuery = (query, params) =>
  */
 
 const query = async (req, res) => {
-
   const p = {
     q: data.normalize(req.query.q || ""),
     key: req.query.key || "",
@@ -119,7 +118,6 @@ const query = async (req, res) => {
     p.lon = position.getLongitude();
 
     const sql = p.format === "list" ? models.reverse : models.geojsonReverse;
-    //console.log(sql)
     let rows = await runQuery(sql, [p.lon, p.lat, p.radius, p.limit]);
 
     if (!rows || rows.length < 1) {
@@ -153,20 +151,18 @@ const query = async (req, res) => {
 const directGecoding = async (res, p) => {
 
   const sql = p.format === "list" ? models.geocode : models.geojsonGeocode;
-  //console.log(sql)
   try {
     
     const rows = await runQuery(sql, [p.q, p.limit]);
     const response = getResponse(formatResults(rows, p.format))
 
-  //  return res.status(200).json(formatResults(rows, p.format));
     return res.status(response.code).json(response.body);
 
   } catch (error) {
-    console.log("An error has been catched")
+    console.log("An error has been catched", error)
     const isAuthError = error.message.includes("authentication failed");
     return res.status(500).json(isAuthError ? "Database authentication error, check credentials or connections available." : error.message);
   }
 }
 
-module.exports = { query };
+export default query;

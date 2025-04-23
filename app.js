@@ -1,23 +1,23 @@
-"use strict";
+import express from "express";
+import cors from "cors";
+import config from "./src/config.js";
+import search from "./src/routes/search.js";
+import places from "./src/routes/places.js";
 
-const express = require("express");
-const cors = require("cors");
 const app = express();
-
-const config = require("./src/config");
 const port = config.server.port;
 const path = config.server.path;
-const search = require("./src/routes/search");
-const places = require("./src/routes/places");
 
 app.use(cors());
+/* app.use(express.json()); 
+app.use(express.urlencoded({ extended: true }));  */
 
 app.get("/", (req, res) => {
   res.json({ info: "Geocodr API" });
 });
 
-app.get(`/${path}/search`, search.query);
-app.get(`/${path}/places`, places.query);
+app.get(`/${path}/search`, search);
+app.get(`/${path}/places`, places);
 
 app.listen(port, () => {
   console.log(`App running on port ${port}.`);

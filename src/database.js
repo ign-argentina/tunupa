@@ -1,9 +1,8 @@
-"use strict";
+import config from "./config.js";
+import pkg from 'pg';
 
-const config = require("./config");
-
-const Pool = require("pg").Pool;
-const pool = new Pool({
+const {Pool} = pkg;
+const db = new Pool({
   host: config.db.host,
   port: config.db.port,
   database: config.db.dbname,
@@ -14,6 +13,4 @@ const pool = new Pool({
   idleTimeoutMillis: 0
 });
 
-module.exports = {
-  pool
-};
+export default db;
