@@ -1,12 +1,12 @@
-"use strict";
 
-const config = require("../config");
-const db = require("../database");
-const models = require("../models/places");
+import config from "../config.js";
+import db from "../database.js";
+import * as models from "../models/places.js";
 
 
 // TO DO
 const query = async (req, res) => {
+
   let p = {
     id: req.query.id || "",
     key: req.query.key || "",
@@ -46,6 +46,4 @@ const query = async (req, res) => {
   }
 };
 
-module.exports = {
-  query
-};
+export default query;

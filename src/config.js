@@ -1,6 +1,11 @@
-"use strict";
+import { readFileSync } from "fs";
+import path from "path"; 
 
-var env = process.env.NODE_ENV || "development";
-const config = require("../config.json")[env];
+const env = process.env.NODE_ENV || "development";
 
-module.exports = config;
+
+const configPath = path.resolve("./config.json");
+const configFile = readFileSync(configPath, "utf-8");
+const config = JSON.parse(configFile)[env];
+
+export default config;
