@@ -13,6 +13,12 @@ const query = async (req, res) => {
     format: req.query.format || config.format,
   };
 
+    // Validar si existe y si es un número entero || HotFix
+    if (!p.id || isNaN(p.id) || !Number.isInteger(Number(p.id))) {
+      return res.status(400).json({ error: 'El parámetro "id" debe ser un número entero válido.' });
+    }
+
+
   if (p.id) {
     let model,
       fc = {
@@ -22,7 +28,7 @@ const query = async (req, res) => {
     try {
       p.format === "geojson" ? (model = models.idGeojson) : (model = models.id);
 
-      await db.pool.query(model, [p.id], (error, results) => {
+      db.query(model, [p.id], (error, results) => {
         if (error) {
           throw error;
         }
