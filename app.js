@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import config from "./src/config.js";
 import search from "./src/routes/search.js";
-import places from "./src/routes/places.js";
+import getPlaceById from "./src/routes/places.js";
 
 const app = express();
 const port = config.server.port;
@@ -17,7 +17,7 @@ app.get("/", (req, res) => {
 });
 
 app.get(`/${path}/search`, search);
-app.get(`/${path}/places`, places);
+app.get(`/${path}/places`, getPlaceById);
 
 app.listen(port, () => {
   console.log(`App running on port ${port}.`);

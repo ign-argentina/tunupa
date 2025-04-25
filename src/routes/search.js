@@ -5,6 +5,7 @@ import Coordinates from "coordinate-parser";
 
 const MIN_QUERY_LENGTH = 2;
 
+
 /**
  * Normaliza una cadena de texto aplicando reemplazos definidos en las abreviaciones de configuración.
  * Elimina espacios en blanco al principio y al final, y reemplaza coincidencias según `config.abbreviations` ubicados en el archivo config.json.
