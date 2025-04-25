@@ -15,7 +15,7 @@ const query = async (req, res) => {
 
     // Validar si existe y si es un número entero || HotFix
     if (!p.id || isNaN(p.id) || !Number.isInteger(Number(p.id))) {
-      return res.status(400).json({ error: 'El parámetro "id" debe ser un número entero válido.' });
+      return res.status(500).json("El id debe ser un entero");
     }
 
 
