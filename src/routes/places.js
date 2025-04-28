@@ -22,11 +22,11 @@ const geojsonFormat = (results) => {
   if (fc.features.length > 0) {
     fc.features[0].properties.id = fc.features[0].properties.id.toString();
   }
-
   return fc
 }
 
 // Documentacion pendiente
+// Devuelve una localidad por ID según formato ingresado.
 const getPlaceById = async (req, res) => {
   try {
     const p = {
@@ -39,11 +39,11 @@ const getPlaceById = async (req, res) => {
       return res.status(400).json("El ID debe ser un número entero")
     }
 
-    let query = models.id;
+    let query = models.ID;
     let results = null;
 
     if (p.format === "geojson") {
-      results = geojsonFormat(await runQuery(models.idGeojson, [p.id]))
+      results = geojsonFormat(await runQuery(models.IDGEOJSON, [p.id]))
     } else {
       results = await runQuery(query, [p.id])
     }
