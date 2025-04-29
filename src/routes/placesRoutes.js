@@ -8,4 +8,5 @@ const placeController = new PlacesController();
 
 placesRoutes.get("/", placeController.getById);
 
+
 export default placesRoutes;

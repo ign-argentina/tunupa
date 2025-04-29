@@ -1,7 +1,9 @@
 import PlaceService from "../services/PlaceService.js";
 
 class PlaceController {
-    PlaceService = new PlaceService();
+    constructor(){
+        this.placeService = new PlaceService();
+    }
 
     getById = async (req, res) => {
         try {
@@ -10,7 +12,7 @@ class PlaceController {
                 return res.status(400).json("El ID debe ser un número entero")
               }
 
-            let response = await this.PlaceService.getById(req.query);
+            let response = await this.placeService.getById(req.query);
 
             return res.status(200).json(response);
         } catch (error) {
@@ -25,3 +27,4 @@ class PlaceController {
 }
 
 export default PlaceController;
+
