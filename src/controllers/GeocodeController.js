@@ -27,7 +27,6 @@ class GeocodeController {
 
             const results = await this.geocodeService.geoCode(params);
             return res.status(200).json(results);
-
         } catch (error) {
             console.log("Error en el controlador", error)
             return res.status(500).json(error.message);
@@ -45,5 +44,5 @@ const data = {
       return q;
     },
   };
-
-export default GeocodeController;
+ 
+  export default GeocodeController;

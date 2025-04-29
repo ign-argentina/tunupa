@@ -10,10 +10,9 @@ class PlaceController {
             const place = req.query
             if (!place.id || isNaN(place.id) || !Number.isInteger(Number(place.id))) {
                 return res.status(400).json("El ID debe ser un número entero")
-              }
+            }
 
             let response = await this.placeService.getById(req.query);
-
             return res.status(200).json(response);
         } catch (error) {
 
@@ -27,4 +26,3 @@ class PlaceController {
 }
 
 export default PlaceController;
-

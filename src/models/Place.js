@@ -16,7 +16,6 @@ const IDNORMAL =
 
 class Place extends BaseModel {
     static getById = async (id, format) => {
-
         let place = null;
 
         if (format === "geojson") {
@@ -49,7 +48,7 @@ class Place extends BaseModel {
             if (!place || place.length < 1) {
                 place = await super.runQuery(INTERSECTS, [coords.lon, coords.lat, coords.limit]);
             }
-            
+
             return place;
         } catch(error){
             console.log("Error en la capa de persistencia " + error.message)

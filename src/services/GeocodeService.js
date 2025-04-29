@@ -1,4 +1,3 @@
-import config from "../config.js";
 import Place from "../models/Place.js";
 import Coordinates from "coordinate-parser";
 
