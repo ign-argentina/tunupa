@@ -2,6 +2,7 @@ import config from "../config.js";
 import Place from "../models/Place.js";
 
 class PlaceService{
+    
     getById =  (queryParams) => {
         try{       
             const place = {
