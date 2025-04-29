@@ -14,9 +14,12 @@
     "coordinate-parser": "^1.0.7",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "express-openapi-validator": "^5.4.9",
     "node-fetch": "^3.0.0",
     "nodemon": "^3.0.3",
-    "pg": "^8.6.0"
+    "pg": "^8.6.0",
+    "swagger-ui-express": "^5.0.1",
+    "yamljs": "^0.3.0"
   },
   "type": "module"
 }

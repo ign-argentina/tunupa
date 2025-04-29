@@ -1,0 +1,133 @@
+openapi: 3.0.0
+info:
+  title: API de Geocodificación Inversa o Directa
+  description: Esta API permite realizar búsquedas geográficas basadas en coordenadas o texto.
+  version: 1.0.0
+  contact:
+    name: Soporte Técnico
+    email: desarrollo@ign.gob.ar
+
+servers:
+  - url: https://api.ign.gob.ar/buscador/search
+
+paths:
+  /buscador/search:
+    get:
+      summary: Realiza una búsqueda geográfica.
+      description: Permite realizar una búsqueda geográfica por coordenadas o texto. Si el parámetro `q` es una coordenada válida, realiza geocodificación reversa. Si no, realiza una geocodificación directa.
+      operationId: search
+      parameters:
+        - name: q
+          in: query
+          description: La consulta de búsqueda (puede ser texto o coordenadas en formato `latitud,longitud`).
+          required: true
+          schema:
+            type: string
+        - name: key
+          in: query
+          description: Clave de la API (opcional).
+          required: false
+          schema:
+            type: string
+        - name: lang
+          in: query
+          description: El idioma de la respuesta. Predeterminado es el configurado en el servidor.
+          required: false
+          schema:
+            type: string
+        - name: limit
+          in: query
+          description: Número máximo de resultados a retornar. Predeterminado es el configurado en el servidor.
+          required: false
+          schema:
+            type: integer
+            default: 5
+        - name: radius
+          in: query
+          description: Radio de búsqueda en metros. Predeterminado es el configurado en el servidor.
+          required: false
+          schema:
+            type: integer
+            default: 500
+        - name: format
+          in: query
+          description: Formato de los resultados. Puede ser "geojson" o "list". Predeterminado es "list".
+          required: false
+          schema:
+            type: string
+            enum:
+              - geojson
+              - list
+            default: list
+
+      responses:
+        '200':
+          description: Resultado exitoso de la búsqueda. Puede devolver un array vacío en caso de no encontrar coincidencias.
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    properties:
+                      type:
+                        type: string
+                        example: FeatureCollection
+                      features:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                            nombre:
+                              type: string
+                            tipo:
+                              type: string
+                            coordenadas:
+                              type: object
+                              properties:
+                                latitud:
+                                  type: number
+                                  format: float
+                                longitud:
+                                  type: number
+                                  format: float
+                  - type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        nombre:
+                          type: string
+                        tipo:
+                          type: string
+                        coordenadas:
+                          type: object
+                          properties:
+                            latitud:
+                              type: number
+                              format: float
+                            longitud:
+                              type: number
+                              format: float
+        '400':
+          description: La longitud de la consulta es demasiado corta.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: La consulta es demasiado corta. Asegúrese de que la longitud sea mayor a 2 caracteres.
+        '500':
+          description: Error interno del servidor o de autenticación de la base de datos.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Database authentication error, check credentials or connections available.
