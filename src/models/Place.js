@@ -35,19 +35,26 @@ class Place extends BaseModel {
     }
 
     static getByCoordinates = async (coords) => {
-        let place = []
-
-        if (coords.format === "list") {
-            place = await super.runQuery(REVERSE, [coords.lon, coords.lat, coords.radius, coords.limit])
-        } else {
-            place = await super.runQuery(GEOJSONREVERSE, [coords.lon, coords.lat, coords.radius, coords.limit])
-            place = this.#geoJsonFormatByCoordinates(place, coords.format);
+        try{
+            
+            let place = []
+            
+            if (coords.format === "list") {
+                place = await super.runQuery(REVERSE, [coords.lon, coords.lat, coords.radius, coords.limit])
+            } else {
+                place = await super.runQuery(GEOJSONREVERSE, [coords.lon, coords.lat, coords.radius, coords.limit])
+                place = this.#geoJsonFormatByCoordinates(place, coords.format);
+            }
+            
+            if (!place || place.length < 1) {
+                place = await super.runQuery(INTERSECTS, [coords.lon, coords.lat, coords.limit]);
+            }
+            
+            return place;
+        } catch(error){
+            console.log("Error en la capa de persistencia " + error.message)
+            return []            
         }
-
-        if (!place || place.length < 1) {
-            place = await super.runQuery(INTERSECTS, [coords.lon, coords.lat, coords.limit]);
-        }
-        return place;
     }
 
     static #geoJsonFormatByCoordinates = (place, format) => {

@@ -9,7 +9,7 @@ class GeocodeService{
 
             let places = []
             const coords = this.#areCoordinates(params)
-
+            console.log(coords)
            if (coords != false){
             console.log("Coordenada valida")
             places = this.#reverseGeocode(coords)
@@ -34,12 +34,11 @@ class GeocodeService{
 
     #areCoordinates = (params) => {
         try{
-            //console.log(params)
+            console.log("Toco")
             const coords = new Coordinates(params.q);
             params.lat = coords.getLatitude();
             params.lon = coords.getLongitude();
 
-           // console.log(params)
             return params;
         } catch(error){
             return false;
