@@ -25,7 +25,6 @@ class GeocodeController {
                 return res.status(400).json(config.messages.shortquery);
               }
 
-            console.log("no")
             const results = await this.geocodeService.geoCode(params);
             return res.status(200).json(results);
 

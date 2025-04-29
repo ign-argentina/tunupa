@@ -9,18 +9,15 @@ class GeocodeService{
 
             let places = []
             const coords = this.#areCoordinates(params)
-            console.log(coords)
            if (coords != false){
-            console.log("Coordenada valida")
             places = this.#reverseGeocode(coords)
            } else {
-            console.log("Coordenadas invalidas, probando de manera directa")
             places = this.#directGeocode(params)
            }
 
            return places;
         }catch(error){
-
+            console.log("Error en la capa de Servicio")
         }
     }
 
@@ -34,7 +31,6 @@ class GeocodeService{
 
     #areCoordinates = (params) => {
         try{
-            console.log("Toco")
             const coords = new Coordinates(params.q);
             params.lat = coords.getLatitude();
             params.lon = coords.getLongitude();
