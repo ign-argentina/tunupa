@@ -10,9 +10,9 @@ info:
 servers:
   - url: https://api.ign.gob.ar/buscador
 
+
 tags:
   - name: search
-    description: Endpoint para geocodificación directa e inversa.
 paths:
   /search:
     get:
@@ -64,78 +64,15 @@ paths:
               - geojson
               - list
             default: list
-
       responses:
         '200':
           description: Resultado exitoso de la búsqueda. Puede devolver un array vacío en caso de no encontrar coincidencias.
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - type: object
-                    properties:
-                      type:
-                        type: string
-                        example: FeatureCollection
-                      features:
-                        type: array
-                        items:
-                          type: object
-                          properties:
-                            id:
-                              type: integer
-                            nombre:
-                              type: string
-                            tipo:
-                              type: string
-                            coordenadas:
-                              type: object
-                              properties:
-                                latitud:
-                                  type: number
-                                  format: float
-                                longitud:
-                                  type: number
-                                  format: float
-                  - type: array
-                    items:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        nombre:
-                          type: string
-                        tipo:
-                          type: string
-                        coordenadas:
-                          type: object
-                          properties:
-                            latitud:
-                              type: number
-                              format: float
-                            longitud:
-                              type: number
-                              format: float
-        '4xx':
+          
+        '400':
           description: La longitud de la consulta es demasiado corta.
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  message:
-                    type: string
-                    example: La consulta es demasiado corta. Asegúrese de que la longitud sea mayor a 2 caracteres.
         '500':
           description: Error interno del servidor o de autenticación de la base de datos.
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  message:
-                    type: string
-                    example: Database authentication error, check credentials or connections available.
+
   /places:
     get:
       tags:
@@ -166,3 +103,10 @@ paths:
               - geojson
               - list
             default: list
+      responses:
+        '200':
+          description: Resultado exitoso de la búsqueda. Puede devolver un array vacío en caso de no encontrar coincidencias.         
+        '400':
+          description: El ID debe ser un número entero.
+        '500':
+          description: Error interno del servidor o de autenticación de la base de datos.
