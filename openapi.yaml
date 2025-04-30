@@ -8,11 +8,16 @@ info:
     email: desarrollo@ign.gob.ar
 
 servers:
-  - url: https://api.ign.gob.ar/buscador/search
+  - url: https://api.ign.gob.ar/buscador
 
+tags:
+  - name: search
+    description: Endpoint para geocodificación directa e inversa.
 paths:
-  /buscador/search:
+  /search:
     get:
+      tags:
+        - search
       summary: Realiza una búsqueda geográfica.
       description: Permite realizar una búsqueda geográfica por coordenadas o texto. Si el parámetro `q` es una coordenada válida, realiza geocodificación reversa. Si no, realiza una geocodificación directa.
       operationId: search
@@ -111,7 +116,7 @@ paths:
                             longitud:
                               type: number
                               format: float
-        '400':
+        '4xx':
           description: La longitud de la consulta es demasiado corta.
           content:
             application/json:
@@ -131,3 +136,33 @@ paths:
                   message:
                     type: string
                     example: Database authentication error, check credentials or connections available.
+  /places:
+    get:
+      tags:
+        - places
+      summary: Realiza una búsqueda por ID.
+      description: Permite realizar una búsqueda geográfica por coordenadas o texto. Si el parámetro `q` es una coordenada válida, realiza geocodificación reversa. Si no, realiza una geocodificación directa.
+      operationId: search
+      parameters:
+        - name: id
+          in: query
+          description: ID del lugar.
+          required: true
+          schema:
+            type: integer
+        - name: key
+          in: query
+          description: Clave de la API (opcional).
+          required: false
+          schema:
+            type: string
+        - name: format
+          in: query
+          description: Formato de los resultados. Puede ser "geojson" o "list". Predeterminado es "list".
+          required: false
+          schema:
+            type: string
+            enum:
+              - geojson
+              - list
+            default: list
